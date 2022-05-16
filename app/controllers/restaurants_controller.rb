@@ -32,7 +32,7 @@ class RestaurantsController < ApplicationController
 
   	def set_restaurants
   		@restaurants = Restaurant.find(params[:id])
-  		#@cuisines=Cuisine.find(params[:cuisine_id])
+  		@cuisines=Cuisine.find(params[:cuisine_id])
   	end
 
   	def restaurants_param
