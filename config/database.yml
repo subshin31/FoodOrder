@@ -1,0 +1,11 @@
+development:
+  adapter: postgresql
+  database: food_order
+  host: localhost
+  pool: 5
+
+staging:
+  adapter: postgresql
+  database: food_order
+  host: localhost
+  pool: 5

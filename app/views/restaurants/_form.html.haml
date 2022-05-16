@@ -1,0 +1,21 @@
+= form_for @restaurants, url: {action: :create} do |form|
+	
+	.row
+		=form.label :name, "Restaurant Name :",class:'col-md-3 text_label' 
+		=form.text_field :name, placeholder:"Enter Restaurant Name ",class:'col-md-9 form_text'
+	%div
+		=form.label :address, "Address :",class:'col-md-3 text_label'
+		=form.text_area :address, placeholder:"Enter Address",rows:'5',cols:'30',class:'col-md-9 form_text'
+	%div
+		=form.label :cuisine_id, "Cuisine :",class:'col-md-3 text_label'
+		= select_tag "cuisine_id", options_from_collection_for_select(@cuisines, :id, :name),class:'col-md-9 select_tag form_text'	
+	%div
+		=form.label :open_at, "Open Time :", class:'col-md-3 text_label'
+		=form.time_field :open_at, class:'col-md-9 form_text'
+	%div
+		=form.label :close_at, "Close Time :",class:'col-md-3 text_label'
+		=form.time_field :close_at, class:'col-md-9 form_text'
+	%div
+		=form.submit "Save Restaurant Name", class:'save_button'
+	
+	

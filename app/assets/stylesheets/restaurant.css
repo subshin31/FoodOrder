@@ -1,0 +1,45 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.head_padding{
+	padding: 10px;
+}
+.row{
+	width: 100%;
+}
+.col-md-3{
+  padding: 12px;
+  width: 12.2%;
+  float: left;
+}
+.col-md-9{
+  padding: 12px;
+  width:25%;
+  margin: 10px;
+}
+.select_tag
+{
+	width: 355px;
+}
+.text_label,.form_text{
+	font-size: 18px;
+	font-family: sans-serif;
+}
+.save_button{
+	padding: 10px;
+	margin: 10px 0 0 150px;
+	width: 200px;
+	border: none;
+	border-radius: 5px;
+	background-color: #f90;
+	color: #fff;
+	font-size: 16px;
+}
+
+/*index.html css*/
+.link_item{
+	padding: 30px;
+	font-size: 18px;
+	margin-top: 10px;
+}
