@@ -8,15 +8,12 @@ class RestaurantsController < ApplicationController
 
   def new
   	@cuisines = Cuisine.new
-  	@cuisines = Cuisine.distinct.order(:name)
+  	@cuisine_names = Cuisine.all.order('name').map{|c| [c.name, c.id] }
     @restaurants = Restaurant.new
   end
 
-  #save Restaurant name
   def create 
-  	render json: params and return
-  	@restaurants = Restaurant.new(restaurants_param)
-  	@cuisines = Cuisine.new(cuisines_param)
+    @restaurants = Restaurant.new(restaurants_param)
   	respond_to do |format|
   		if @restaurants.save
   			format.html {redirect_to restaurants_url(@restaurants),notice: "Restaurant Name Inserted" }
@@ -32,16 +29,9 @@ class RestaurantsController < ApplicationController
 
   	def set_restaurants
   		@restaurants = Restaurant.find(params[:id])
-  		#@cuisines=Cuisine.find(params[:cuisine_id])
   	end
 
   	def restaurants_param
   		params.fetch(:restaurant,{}).permit(:name,:address,:cuisine_id,:open_at,:close_at)
-  		params.fetch(:cuisines,{}).permit(:id)
    	end
-
-   	# def cuisines_param
-   	# 	params.where(:cuisines,{}).permit(:id)
-   	# end
-
 end
