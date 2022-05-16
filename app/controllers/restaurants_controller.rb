@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
 
  def index
   @restaurants = Restaurant.all
-  #@cuisines = Cuisine.all
+  @cuisines = Cuisine.all
   render
  end
 
@@ -32,16 +32,16 @@ class RestaurantsController < ApplicationController
 
   	def set_restaurants
   		@restaurants = Restaurant.find(params[:id])
-  		@cuisines=Cuisine.find(params[:cuisine_id])
+  		#@cuisines=Cuisine.find(params[:cuisine_id])
   	end
 
   	def restaurants_param
   		params.fetch(:restaurant,{}).permit(:name,:address,:cuisine_id,:open_at,:close_at)
-  		# => params.fetch(:cuisines,{}).permit(:id,:cuisine_id)
+  		params.fetch(:cuisines,{}).permit(:id)
    	end
 
-   	def cuisines_param
-   		params.where(:cuisines,{}).permit(:id)
-   	end
+   	# def cuisines_param
+   	# 	params.where(:cuisines,{}).permit(:id)
+   	# end
 
 end
