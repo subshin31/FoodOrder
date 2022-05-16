@@ -14,7 +14,7 @@ class RestaurantsController < ApplicationController
 
   #save Restaurant name
   def create 
-  	render json: params and return
+  	# render json: params and return
   	@restaurants = Restaurant.new(restaurants_param)
   	@cuisines = Cuisine.new(cuisines_param)
   	respond_to do |format|
