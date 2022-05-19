@@ -1,6 +1,36 @@
 
-%h1 Restaurants 
+%h1.restaurants_heading Restaurants 
 
-= @restaurants.to_json
-%p
+%table.table_style.mt-5
+	%thead
+		%tr
+			%th.table_heading ID
+			%th.table_heading Restaurant Name
+			%th.table_heading Address
+			%th.table_heading Cuisine
+			%th.table_heading Opening Time
+			%th.table_heading Closing Time
+	%tbody
+		- @restaurants.each do |res|
+			%tr
+				%div
+				%td.table_data
+					= res.id
+				%td.table_data
+					= res.name
+				%td.table_data
+					= res.address
+				%td.table_data
+					= res.cuisine[:name]
+				%td.table_data
+					= res.open_at
+				%td.table_data
+					= res.close_at
+				/ %td.table_data
+				/ 	=link_to "Show",show_restaurant_path
+				%td.table_data
+					=link_to "Edit",edit_restaurant_path
+				/ %td.table_data
+				/ 	=link_to "Update",update_restaurant_path
+%p.paragraph_style
 	= link_to "New Restaurant",new_restaurant_path, class:'link_item'

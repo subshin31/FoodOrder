@@ -38,8 +38,23 @@
 }
 
 /*index.html css*/
+h1.restaurants_heading{
+	padding: 20px;
+	margin-left: 320px;
+}
 .link_item{
-	padding: 30px;
-	font-size: 18px;
-	margin-top: 10px;
+	font-size: 24px;
+}
+.paragraph_style{
+	margin-left: 352px;
+	padding:40px 10px;
+}
+.table_style{
+	padding: 5px;
+	margin-left: 10px;
+	border: 1px solid black;
+}
+.table_data,.table_heading{
+	padding: 22px;
+	border: 1px solid black;
 }

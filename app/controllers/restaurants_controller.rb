@@ -3,26 +3,35 @@ class RestaurantsController < ApplicationController
  def index
   @restaurants = Restaurant.all
   @cuisines = Cuisine.all
-  render
+  render 
  end
 
   def new
   	@cuisines = Cuisine.new
   	@cuisine_names = Cuisine.all.order('name').map{|c| [c.name, c.id] }
-    @restaurants = Restaurant.new
+    @restaurant = Restaurant.new
   end
 
   def create 
     @restaurants = Restaurant.new(restaurants_param)
+   
   	respond_to do |format|
+   
   		if @restaurants.save
-  			format.html {redirect_to restaurants_url(@restaurants),notice: "Restaurant Name Inserted" }
-  			format.json {render :show, status: :created, location: @restaurants }
+        p "After save restaurants"
+  			# format.html {redirect_to restaurants_url(@restaurants),notice: "Restaurant Name Inserted" }
+  			# format.json {render :show, status: :created, location: @restaurants }
+        redirect_to restaurants_url
   		else
   			format.html {render :new, staus: :unprocessable_entity }
   			format.json {render json: @restaurants.errors, status: :unprocessable_entity }
   		end
   	end
+  end
+
+  def edit
+    @restaurant = Restaurant.find(params[:id])
+    @cuisine_names = Cuisine.all.order('name').map{|c| [c.name, c.id] }
   end
 
   private
