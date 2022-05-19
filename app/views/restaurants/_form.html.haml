@@ -1,4 +1,4 @@
-=  form_for @restaurant do |form|
+=form_for @restaurant do |form|
 	.row
 		=form.label :name, "Restaurant Name :",class:'col-md-3 text_label' 
 		=form.text_field :name, placeholder:"Enter Restaurant Name ",class:'col-md-9 form_text'
@@ -7,8 +7,7 @@
 		=form.text_area :address, placeholder:"Enter Address",rows:'5',cols:'30',class:'col-md-9 form_text'
 	%div
 		=form.label :cuisine_id, "Cuisine :",class:'col-md-3 text_label'
-		= select_tag 
-		-if @restaurant'restaurant[cuisine_id]', options_for_select(@cuisine_names),include_blank:"Select Cuisine",required: true, class: "col-md-9 select_tag form_text"
+		= select_tag 'restaurant[cuisine_id]', options_for_select(@cuisine_names, @restaurant[:cuisine_id] || ""),include_blank:"Select Cuisine",required: true, class: "col-md-9 select_tag form_text"
 	%div
 		=form.label :open_at, "Open Time :", class:'col-md-3 text_label'
 		=form.time_field :open_at, class:'col-md-9 form_text'
