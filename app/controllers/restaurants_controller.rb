@@ -1,4 +1,6 @@
 class RestaurantsController < ApplicationController
+ before_action :current_restaurant, only: [:show, :edit, :update, :destroy]
+ before_action :get_cuisine_names, only: [:new, :edit]
 
  def index
   @restaurants = Restaurant.all
@@ -6,41 +8,52 @@ class RestaurantsController < ApplicationController
   render 
  end
 
+  def show
+  end
+
   def new
   	@cuisines = Cuisine.new
-  	@cuisine_names = Cuisine.all.order('name').map{|c| [c.name, c.id] }
     @restaurant = Restaurant.new
   end
 
   def create 
     @restaurants = Restaurant.new(restaurants_param)
-   
-  	respond_to do |format|
-   
-  		if @restaurants.save
-        p "After save restaurants"
-  			# format.html {redirect_to restaurants_url(@restaurants),notice: "Restaurant Name Inserted" }
-  			# format.json {render :show, status: :created, location: @restaurants }
+    if @restaurants.save 
         redirect_to restaurants_url
-  		else
-  			format.html {render :new, staus: :unprocessable_entity }
-  			format.json {render json: @restaurants.errors, status: :unprocessable_entity }
-  		end
-  	end
+		else
+			render :new
+		end
   end
 
   def edit
-    @restaurant = Restaurant.find(params[:id])
-    @cuisine_names = Cuisine.all.order('name').map{|c| [c.name, c.id] }
+    
+  end
+
+  def update
+    if @restaurant.update(restaurants_param)
+      redirect_to restaurants_url
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    render json: params and return
   end
 
   private
 
-  	def set_restaurants
-  		@restaurants = Restaurant.find(params[:id])
-  	end
+  	def current_restaurant
+      @restaurant = Restaurant.find(params[:id])
+    end
 
   	def restaurants_param
   		params.fetch(:restaurant,{}).permit(:name,:address,:cuisine_id,:open_at,:close_at)
    	end
+
+    def get_cuisine_names
+      @cuisine_names = Cuisine.all.order('name').map{|c| [c.name, c.id] }
+    end
+
+
 end

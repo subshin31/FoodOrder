@@ -13,7 +13,6 @@
 	%tbody
 		- @restaurants.each do |res|
 			%tr
-				%div
 				%td.table_data
 					= res.id
 				%td.table_data
@@ -26,11 +25,11 @@
 					= res.open_at
 				%td.table_data
 					= res.close_at
-				/ %td.table_data
-				/ 	=link_to "Show",show_restaurant_path
 				%td.table_data
-					=link_to "Edit",edit_restaurant_path
-				/ %td.table_data
-				/ 	=link_to "Update",update_restaurant_path
+					=link_to "Show",restaurant_path(res)
+				%td.table_data
+					=link_to "Edit",edit_restaurant_path(res)
+				%td.table_data
+					=link_to "Delete",restaurant_path(res), method: :delete
 %p.paragraph_style
 	= link_to "New Restaurant",new_restaurant_path, class:'link_item'
