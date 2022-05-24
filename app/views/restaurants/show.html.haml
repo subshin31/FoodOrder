@@ -1,3 +1,18 @@
-= @restaurant.name
-%br
-= @restaurant.address
+.display-5
+	Details of Restaurant
+.m-3
+	Restaurant Name :
+	= @restaurant.name
+.m-3
+	Restaurant Address :
+	= @restaurant.address
+.m-3
+	Restaurant Cuisine :
+	= @restaurant.cuisine[:name]
+.m-3
+	Restaurant Opening Time :
+	= @restaurant.open_at
+.m-3
+	Restaurant Closing Time :
+	= @restaurant.close_at
+

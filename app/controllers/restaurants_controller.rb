@@ -18,11 +18,12 @@ class RestaurantsController < ApplicationController
 
   def create 
     @restaurants = Restaurant.new(restaurants_param)
-    if @restaurants.save 
+    if @restaurants.save
+        flash[:message] = "Restaurant Name is Added"
         redirect_to restaurants_url
 		else
 			render :new
-		end
+		end 
   end
 
   def edit
@@ -31,6 +32,7 @@ class RestaurantsController < ApplicationController
 
   def update
     if @restaurant.update(restaurants_param)
+      flash.now[:notice] = "Restaurant Name is Updated"
       redirect_to restaurants_url
     else
       render :edit
@@ -38,7 +40,11 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
-    render json: params and return
+    if @restaurant.delete
+      redirect_to restaurants_url
+    else
+      render json: params and return
+    end
   end
 
   private
