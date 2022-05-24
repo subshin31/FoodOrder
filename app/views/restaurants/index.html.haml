@@ -33,19 +33,3 @@
 					=button_to "Delete",restaurant_path(res),method: :delete,data:{confirm:"Are You Sure?"},class:"btn btn-danger "
 %p.paragraph_style
 	= link_to "New Restaurant",new_restaurant_path, class:'link_item'
-:javascript
-	/ $(function () {
-	/ 	$(".btn-danger").onclick()
-	/ 	{
-	/ 		alert("This is an alert message!");
-	/ 	}
-	/ });
-
-	/ $(".btn").click(function(){
-	/ 	alert("Are You Sure?");
-	/ });
-
-%script{:type=>"text/javascript"}
-	$(function(){
-	alert("Are You Sure")
-	});
