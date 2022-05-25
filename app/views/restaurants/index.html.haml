@@ -1,18 +1,9 @@
-
-%h1.restaurants_heading Restaurants 
-
-%table.table_style.mt-5
-	%thead
-		%tr
-			%th.table_heading ID
-			%th.table_heading Restaurant Name
-			%th.table_heading Address
-			%th.table_heading Cuisine
-			%th.table_heading Opening Time
-			%th.table_heading Closing Time
-	%tbody
-		- @restaurants.each do |res|
+%h1.text-center.my-4 Restaurants 
+.col-md-12.px-3
+	%table.table.table-bordered.table-striped.table-hover.table-responsive
+		%thead
 			%tr
+<<<<<<< HEAD
 				%td.table_data
 					= res.id
 				%td.table_data
@@ -35,3 +26,39 @@
 					
 %p.paragraph_style
 	= link_to "New Restaurant",new_restaurant_path, class:'link_item'
+=======
+				%th ID
+				%th Restaurant Name
+				%th Address
+				%th Cuisine
+				%th Opening Time
+				%th Closing Time
+				%th.text-center{ colspan: 3} Actions
+		%tbody
+			- if !@restaurants.empty?
+				- @restaurants.each do |res|
+					%tr
+						%td
+							= res.id
+						%td
+							= res.name
+						%td
+							= res.address
+						%td
+							= res.cuisine[:name]
+						%td
+							= res.open_at
+						%td
+							= res.close_at
+						%td
+							=link_to "Show",restaurant_path(res),class:"btn btn-info"
+						%td
+							=link_to "Edit",edit_restaurant_path(res),class:"btn btn-primary"
+						%td
+							=button_to "Delete",restaurant_path(res),res: {data: { turbo_confirm: "Are You Sure?"} },method: :delete, class:"btn btn-danger "
+			- else
+				%tr
+					%td.text-center{ colspan: 6}
+						No records found
+= link_to "New Restaurant",new_restaurant_path, class:'text-left px-3'
+>>>>>>> e45e3357b4949bf11d98c1245a1a76d778abadbd
