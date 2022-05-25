@@ -30,7 +30,8 @@
 				%td.table_data
 					=link_to "Edit",edit_restaurant_path(res),class:"btn btn-primary"
 				%td.table_data
-					=button_to "Delete",restaurant_path(res),res: {data: { turbo_confirm: "Are You Sure?"} },method: :delete, class:"btn btn-danger "
+					/ =button_to "Delete",restaurant_path(res),res: {data: { turbo_confirm: "Are You Sure?"} },method: :delete, class:"btn btn-danger "
+					= button_to "Delete", restaurant_path_for(action: :delete, id: :@restaurants.id),method: :delete, confirm: "Are You Sure?"
 					
 %p.paragraph_style
 	= link_to "New Restaurant",new_restaurant_path, class:'link_item'
