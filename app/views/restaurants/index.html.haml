@@ -3,30 +3,6 @@
 	%table.table.table-bordered.table-striped.table-hover.table-responsive
 		%thead
 			%tr
-<<<<<<< HEAD
-				%td.table_data
-					= res.id
-				%td.table_data
-					= res.name
-				%td.table_data
-					= res.address
-				%td.table_data
-					= res.cuisine[:name]
-				%td.table_data
-					= res.open_at
-				%td.table_data
-					= res.close_at
-				%td.table_data
-					=link_to "Show",restaurant_path(res),class:"btn btn-info"
-				%td.table_data
-					=link_to "Edit",edit_restaurant_path(res),class:"btn btn-primary"
-				%td.table_data
-					/ =button_to "Delete",restaurant_path(res),res: {data: { turbo_confirm: "Are You Sure?"} },method: :delete, class:"btn btn-danger "
-					= button_to "Delete", restaurant_path_for(action: :delete, id: :@restaurants.id),method: :delete, confirm: "Are You Sure?"
-					
-%p.paragraph_style
-	= link_to "New Restaurant",new_restaurant_path, class:'link_item'
-=======
 				%th ID
 				%th Restaurant Name
 				%th Address
@@ -61,4 +37,3 @@
 					%td.text-center{ colspan: 6}
 						No records found
 = link_to "New Restaurant",new_restaurant_path, class:'text-left px-3'
->>>>>>> e45e3357b4949bf11d98c1245a1a76d778abadbd
