@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
 	end	
 
 	def new
-	 @restaurant = Restaurant.distinct.order(:name)
+	 @restaurants = Restaurant.distinct.order(:name)
 	 @order = Order.new
 	end
 end

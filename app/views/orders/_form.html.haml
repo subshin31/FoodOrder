@@ -5,7 +5,7 @@
 		=form.text_field :customer_name,placeholder:"Enter Customer Name",class:"col-md-9 p-2"
 	%div
 		=form.label :restaurant_name, " Restaurant Name:",class:"col-md-3 p-2"
-		=select_tag 'order[restaurant_name]', options_for_select(@restaurant_names,@order[:restaurant_name] || ""),include_blank:"Select Cuisine",required: true, class: "col-md-9 select_tag form_text"
+		=form.select(:restaurant_name,Restaurant.all.collect{|r|[r.name]},{prompt:"Select Restaurant"})
 	%div
 		=form.label :menu_name, " Menu Item:",class:"col-md-3 p-2"
 		=form.text_field :menu_name,placeholder:"Enter Menu Item Name",class:"col-md-9 p-2"
