@@ -46,7 +46,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_061803) do
 
   create_table "orders", force: :cascade do |t|
     t.string "menu_name"
-    t.string "customer_name"
     t.string "restaurant_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
