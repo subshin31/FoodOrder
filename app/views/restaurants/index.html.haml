@@ -21,7 +21,10 @@
 						%td
 							= res.address
 						%td
-							= res.cuisine[:name]
+							- if res.cuisine.present?
+								= res.cuisine[:name]
+							- else
+								NA
 						%td
 							= res.open_at
 						%td
