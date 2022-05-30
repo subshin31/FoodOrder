@@ -2,7 +2,7 @@
 .col-md-12.px-3
 	%table.table.table-bordered.table-striped.table-hover.table-responsive
 		%thead
-			%tr
+			%tr.text-center
 				%th ID
 				%th Restaurant Name
 				%th Address
@@ -34,6 +34,6 @@
 							=button_to "Delete",restaurant_path(res),res: {data: { turbo_confirm: "Are You Sure?"} },method: :delete, class:"btn btn-danger "
 			- else
 				%tr
-					%td.text-center{ colspan: 6}
+					%td.text-center{ colspan: 7}
 						No records found
 = link_to "New Restaurant",new_restaurant_path, class:'text-left px-3'
