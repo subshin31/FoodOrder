@@ -6,7 +6,20 @@ class OrdersController < ApplicationController
 	end	
 
 	def new
-	 @restaurants = Restaurant.distinct.order(:name)
 	 @order = Order.new
 	end
+
+	def create
+	 @order = Order.new(order_params)
+	 if @order.save
+	 	redirect_to orders_url
+	 else
+	 	render :new
+	 end
+	end
+
+	private
+	 	def order_params
+	 		params.fetch(:order,{}).permit(:menu_name,:customer_name,:restaurant_name)
+	 	end
 end

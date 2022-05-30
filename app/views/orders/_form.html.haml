@@ -5,9 +5,9 @@
 		=form.text_field :customer_name,placeholder:"Enter Customer Name",class:"col-md-9 p-2"
 	%div
 		=form.label :restaurant_name, " Restaurant Name:",class:"col-md-3 p-2"
-		=form.select(:restaurant_name,Restaurant.all.collect{|r|[r.name]},{prompt:"Select Restaurant"})
+		=form.select(:restaurant_name,Restaurant.all.collect{|r|[r.name]},{prompt:"Select Restaurant"},{class:"col-md-9"})
 	%div
 		=form.label :menu_name, " Menu Item:",class:"col-md-3 p-2"
-		=form.text_field :menu_name,placeholder:"Enter Menu Item Name",class:"col-md-9 p-2"
+		=form.select(:menu_name,Menu.all.collect{|m|[m.name]},{prompt:"Select Menu"},class:"col-md-9")
 	%div
 		=form.submit "Save Order", class:"save_button"
