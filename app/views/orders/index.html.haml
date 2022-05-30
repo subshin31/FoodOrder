@@ -1,4 +1,13 @@
 %h1 Orders
 =@order.to_json
 %p
- =link_to "New Order",new_order_path
+/ .col-md-12
+/     %table.table
+/         %thead
+/             %tr
+/                 %th Restaurant Name
+/                 %th Dish Name
+/         %tbody
+/             - if
+
+=link_to "New Order",new_order_path
