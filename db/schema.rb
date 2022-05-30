@@ -38,9 +38,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_061803) do
 
   create_table "menus", force: :cascade do |t|
     t.string "name"
-    t.string "cuisine_id"
+    t.integer "cuisine_id"
     t.integer "price"
-    t.string "type"
+    t.string "menu_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_061803) do
     t.integer "menu_id"
     t.integer "restaurant_id"
     t.integer "payment_id"
-    t.boolean "status"
+    t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_061803) do
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.string "cuisine_id"
+    t.integer "cuisine_id"
     t.datetime "open_at"
     t.datetime "close_at"
     t.datetime "created_at", null: false

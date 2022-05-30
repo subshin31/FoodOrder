@@ -1,10 +1,14 @@
 =form_for @order do |form|
 	.row
-	%div
-		=form.label :restaurant_name, " Restaurant Name:",class:"col-md-3 p-2"
-		=form.select(:restaurant_name,Restaurant.all.collect{|r|[r.name]},{prompt:"Select Restaurant"},{class:"col-md-9"})
-	%div
-		=form.label :menu_name, " Menu Item:",class:"col-md-3 p-2"
-		=form.select(:menu_name,Menu.all.collect{|m|[m.name]},{prompt:"Select Menu"},class:"col-md-9")
-	%div
-		=form.submit "Save Order", class:"save_button"
+		%div
+			=form.label :restaurant_id, "Restaurant Name :",class:'col-md-3 text_label'
+			= select_tag 'order[restaurant_id]', options_for_select(@restaurants, @order[:restaurant_id] || ""),include_blank:"Select Restaurant Name",required: true, class: "col-md-9 select_tag form_text"
+		%div
+			=form.label :menu_id, "Menu Item Name :",class:'col-md-3 text_label'
+			= select_tag 'order[menu_id]', options_for_select(@menus, @order[:menu_id] || ""),include_blank:"Select Menu Item Name",required: true, class: "col-md-9 select_tag form_text"
+		%div
+			=form.label :customer_id, "Customer Name :",class:'col-md-3 text_label'
+			= select_tag 'order[customer_id]', options_for_select(@customers, @order[:customer_id] || ""),include_blank:"Select Customer Name",required: true, class: "col-md-9 select_tag form_text"
+			
+		%div
+			=form.submit "Save Order", class:"save_button"

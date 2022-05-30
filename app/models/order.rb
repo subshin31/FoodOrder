@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
 	belongs_to :customer
-	has_many :menus
-	has_many :restaurants
+	belongs_to :menu
+	belongs_to :restaurant
 	has_many :payments
+
 end

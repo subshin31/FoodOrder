@@ -1,13 +1,38 @@
-%h1 Orders
-=@order.to_json
-%p
-/ .col-md-12
-/     %table.table
-/         %thead
-/             %tr
-/                 %th Restaurant Name
-/                 %th Dish Name
-/         %tbody
-/             - if
+%h1.text-center.my-4 Orders 
+.col-md-12.px-3
+    %table.table.table-bordered.table-striped.table-hover.table-responsive
+        %thead
+            %tr.text-center
+                %th ID
+                %th Customer Name
+                %th Restaurant Name
+                %th Menu Item Name
+                %th Order Status
+                %th.text-center{ colspan: 3} Actions
+        %tbody
+            - if !@orders.empty?
+                - @orders.each do |order|
+                    %tr
+                        %td
+                            = order.id
+                        %td
+                            = order.customer[:name]
+                        %td
+                            = order.restaurant[:name]
+                        %td
+                            = order.menu[:name]    
+                        %td
+                            = order.status    
+                        %td
+                            =link_to "Edit",edit_order_path(order),class:"btn btn-primary"
+                        %td 
+                            =link_to "Show",order_path(order),class:"btn btn-info"
+                        %td
+                            =button_to "Delete",order_path(order),order: {data: { turbo_confirm: "Are You Sure?"} },method: :delete, class:"btn btn-danger "
 
-=link_to "New Order",new_order_path
+
+            - else
+                %tr
+                    %td.text-center{ colspan: 6}
+                        No records found
+= link_to "New Order",new_order_path, class:'text-left px-3'
