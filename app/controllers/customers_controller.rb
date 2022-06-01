@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
 	before_action :current_customer, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@customers = Customer.all.order(:name).page(params[:page]).per(3)
+		@customers = Customer.all.order(:name).page(params[:page]).per(4)
 	end
 
 	def new
@@ -13,12 +13,21 @@ class CustomersController < ApplicationController
 	end
 
 	def create
-		@customers =Customer.new(customers_params)
-		if @customers.save
+		@customer = Customer.new(customers_params)
+		if @customer.save
 			redirect_to customers_url
 		else
+			# @customer = Customer.new
 			render :new
 		end
+		# @customers = Customer.create(customers_params)
+		# if @customers.valid?
+		# 	redirect_to customers_url
+		# else
+		# 	# render json: @customers.errors and return
+		# 	@customer = Customer.new
+		# 	render :new
+		# end
 	end
 
 	def edit
