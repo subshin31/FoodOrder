@@ -9,6 +9,8 @@
 		%div
 			=form.label :customer_id, "Customer Name :",class:'col-md-3 text_label'
 			= select_tag 'order[customer_id]', options_for_select(@customers, @order[:customer_id] || ""),include_blank:"Select Customer Name",required: true, class: "col-md-9 select_tag form_text"
-			
+		- if @order.id?
+			=form.label :status, "Order Status :",class:'col-md-3 text_label'
+			= select_tag 'order[status]', options_for_select(Order.statuses.map{|key,value|[key.capitalize, value]},@order.status_before_type_cast || ""),include_blank:"Select Order Status ",required: true, class: "col-md-9 select_tag form_text"
 		%div
 			=form.submit "Save Order", class:"save_button"

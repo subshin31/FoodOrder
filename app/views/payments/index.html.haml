@@ -1,0 +1,36 @@
+%h1.text-center.my-4 Payament 
+.col-md-12.px-3
+    %table.table.table-bordered.table-striped.table-hover.table-responsive
+        %thead
+            %tr.text-center
+                %th ID
+                %th Customer Name
+                %th Order ID
+                %th Payment Type
+                %th Status
+                %th.text-center{ colspan: 3} Actions
+        %tbody
+            - if !@payments.empty?
+                - @payments.each do |payment|
+                    %tr
+                        %td
+                            = payment.id
+                        %td
+                            = payment.customer[:name]
+                        %td
+                            = payment.order[:id]
+                        %td
+                            = payment.payment_type                   
+                        %td
+                            = payment.status.humanize
+                        %td
+                            =link_to "Edit",edit_payment_path(payment),class:"btn btn-primary"
+                        %td
+                            =link_to "Show",payment_path(payment),class:"btn btn-info"
+                        %td
+                            =button_to "Delete",payment_path(payment),payment: {data: {turbo_confirm: "Are You Sure ?"}},method: :delete,class: "btn btn-danger"
+            - else
+                %tr
+                    %td.text-center{ colspan: 6}
+                        No records found
+= link_to "New Payment",new_payment_path, class:'text-left px-3'

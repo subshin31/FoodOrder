@@ -10,9 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_26_061803) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_25_102040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "delivery_status", ["order_placed", "order_dispatched", "order_shipped", "order_deliverd"]
 
   create_table "cuisines", force: :cascade do |t|
     t.string "name"
@@ -25,13 +29,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_061803) do
     t.string "address"
     t.string "contact_number"
     t.string "email_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "deliveries", force: :cascade do |t|
-    t.integer "order_id"
-    t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_061803) do
     t.integer "menu_id"
     t.integer "restaurant_id"
     t.integer "payment_id"
-    t.boolean "status", default: false
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_061803) do
     t.integer "order_id"
     t.string "type"
     t.integer "last_4_digit"
-    t.boolean "status"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

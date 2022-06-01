@@ -3,9 +3,9 @@ class CreatePayments < ActiveRecord::Migration[7.0]
     create_table :payments do |t|
       t.integer :customer_id
       t.integer :order_id
-      t.string :type
+      t.string :payment_type
       t.integer :last_4_digit
-      t.boolean :status
+      t.integer :status
 
       t.timestamps
     end

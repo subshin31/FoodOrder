@@ -1,0 +1,19 @@
+=form_for @payment do |form|
+    .row
+        %div
+            =form.label :customer_id, "Customer Name :",class:'col-md-3 text_label'
+            = select_tag 'payment[customer_id]', options_for_select(@customers, @payment[:customer_id] || ""),include_blank:"Select Customer Name",required: true, class: "col-md-9 select_tag form_text"
+        %div
+            =form.label :order_id, "Order ID :",class:'col-md-3 text_label'
+            = select_tag 'payment[order_id]', options_for_select(@orders, @payment[:order_id] || ""),include_blank:"Select Order",required: true, class: "col-md-9 select_tag form_text"
+        %div
+            =form.label :payment_type, "Payment Type :",class:'col-md-3 text_label'
+            =form.text_field :payment_type, placeholder: "Please Enter Payment Type",class: "col-md-9 form_text"
+        %div
+            =form.label :last_4_digit, "Card Last 4 Digit :",class:'col-md-3 text_label'
+            =form.number_field :last_4_digit, placeholder: "Please Enter last 4 digit",class: "col-md-9 form_text"
+        -if @payment.id?
+            =form.label :status, "Status :",class:'col-md-3 text_label'   
+            =select_tag 'payment[status]',options_for_select(Payment.statuses.map{|key,value|[key.capitalize,value]},@payment.status_before_type_cast || ""),include_blank:"Select Status",required:true,class: "col-md-9 select_tag form_text"
+        %div
+            =form.submit "Save Order", class:"save_button"

@@ -22,7 +22,7 @@
                         %td
                             = order.menu[:name]    
                         %td
-                            = order.status    
+                            = order.status.humanize
                         %td
                             =link_to "Edit",edit_order_path(order),class:"btn btn-primary"
                         %td 

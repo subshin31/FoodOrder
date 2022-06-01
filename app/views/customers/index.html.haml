@@ -1,16 +1,16 @@
 %h1.text-center.my-4 Customers
 .col-md-12.px-3
-	%table.table.table-bordered.table-striped.table-hover.table-responsive
-		%thead
-			%tr.text-center
-				%th ID
-				%th Customer Name
-				%th Customer Address
-				%th Contact Number
-				%th Email Id
-				%th.text-center{ colspan: 3} Actions
-		%tbody
-			- if !@customers.empty?
+	- if !@customers.empty?
+		%table.table.table-bordered.table-striped.table-hover.table-responsive
+			%thead
+				%tr.text-center
+					%th ID
+					%th Customer Name
+					%th Customer Address
+					%th Contact Number
+					%th Email Id
+					%th.text-center{ colspan: 3} Actions
+			%tbody
 				- @customers.each do |customer|
 					%tr
 						%td
@@ -29,9 +29,5 @@
 							=link_to "Show",customer_path(customer),class:"btn btn-info"
 						%td
 							=button_to "Delete",customer_path(customer),customer: {data: { turbo_confirm: "Are You Sure?"} },method: :delete, class:"btn btn-danger "
-
-			- else
-				%tr
-					%td.text-center{ colspan: 7}
-						No records found
+		= paginate @customers
 = link_to "New Customer",new_customer_path, class:'text-left px-3'

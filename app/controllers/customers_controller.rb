@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
 	before_action :current_customer, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@customers = Customer.all
+		@customers = Customer.all.order(:name).page(params[:page]).per(3)
 	end
 
 	def new

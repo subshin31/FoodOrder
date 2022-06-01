@@ -5,7 +5,7 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.integer :menu_id
       t.integer :restaurant_id
       t.integer :payment_id
-      t.boolean :status, :default => 0
+      t.integer :status
       
       t.timestamps
     end

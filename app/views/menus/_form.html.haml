@@ -1,0 +1,16 @@
+=form_for @menu do |form|
+	.row
+		%div
+			=form.label :name, "Menu Item Name :",class:'col-md-3 text_label'
+			=form.text_field :name, placeholder:"Enter Menu Item Name ",class:'col-md-9 form_text'
+		%div
+			=form.label :cuisine_id, "Cuisine Name :",class:'col-md-3 text_label'
+			= select_tag 'menu[cuisine_id]', options_for_select(@cuisine_names, @menu[:cuisine_id] || ""),include_blank:"Select Cuisine",required: true, class: "col-md-9 select_tag form_text"
+		%div
+			=form.label :menu_type, "Menu Type :",class:'col-md-3 text_label'
+			=form.text_field :menu_type, placeholder:"Enter Menu Type",class:'col-md-9 form_text'
+		%div
+			=form.label :price, "Price :",class:'col-md-3 text_label'
+			=form.number_field :price, in: 1..1000,class:'col-md-9 form_text'		
+		%div
+			=form.submit "Save Order", class:"save_button"

@@ -44,7 +44,9 @@ class OrdersController < ApplicationController
 
 	private
 	 	def order_params
-	 		params.fetch(:order,{}).permit(:restaurant_id,:menu_id,:customer_id)
+	 		 pp = params.require(:order).permit(:restaurant_id,:menu_id,:customer_id)
+      		 pp[:status] = params[:order][:status].to_i
+     		 return pp
 	 	end
 
 	 	def current_order
