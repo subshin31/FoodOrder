@@ -96,6 +96,8 @@ GEM
       reline (>= 0.2.7)
     device (0.0.0)
     digest (3.1.0)
+    email_validator (2.2.3)
+      activemodel
     erubi (1.10.0)
     erubis (2.7.0)
     execjs (2.8.1)
@@ -258,6 +260,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    validates_phone_format_of (2.0.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -283,6 +286,7 @@ DEPENDENCIES
   capybara
   debug
   device (~> 0.0.0)
+  email_validator
   faker
   haml-rails
   importmap-rails
@@ -300,6 +304,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  validates_phone_format_of
   web-console
   webdrivers
 

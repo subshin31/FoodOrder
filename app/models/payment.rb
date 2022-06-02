@@ -5,4 +5,6 @@ class Payment < ApplicationRecord
 	belongs_to :order
 	has_many :customers
 
+	validates :payment_type, presence: true
+	validates :last_4_digit,presence: true, length: { minimum: 4 , maximum: 4}
 end

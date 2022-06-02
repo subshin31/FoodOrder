@@ -3,7 +3,7 @@ class RestaurantsController < ApplicationController
  before_action :get_cuisine_names, only: [:new, :edit]
 
  def index
-  @restaurants = Restaurant.all
+  @restaurants = Restaurant.all.order(:name).page(params[:page]).per(3)
   @cuisines = Cuisine.all
   render 
  end

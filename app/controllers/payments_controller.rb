@@ -4,7 +4,7 @@ class PaymentsController < ApplicationController
     before_action :get_order_id, only: [:new, :edit]
 
 	def index
-		@payments = Payment.all
+		@payments = Payment.all.order(:id).page(params[:page]).per(4)
 		render
 	end
 

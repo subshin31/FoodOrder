@@ -17,17 +17,8 @@ class CustomersController < ApplicationController
 		if @customer.save
 			redirect_to customers_url
 		else
-			# @customer = Customer.new
 			render :new
 		end
-		# @customers = Customer.create(customers_params)
-		# if @customers.valid?
-		# 	redirect_to customers_url
-		# else
-		# 	# render json: @customers.errors and return
-		# 	@customer = Customer.new
-		# 	render :new
-		# end
 	end
 
 	def edit

@@ -30,4 +30,4 @@
 						%td
 							=button_to "Delete",customer_path(customer),customer: {data: { turbo_confirm: "Are You Sure?"} },method: :delete, class:"btn btn-danger "
 		= paginate @customers
-= link_to "New Customer",new_customer_path, class:'text-left px-3'
+= link_to "New Customer",new_customer_path, class:'text-left p-4'
