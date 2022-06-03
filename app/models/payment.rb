@@ -6,5 +6,5 @@ class Payment < ApplicationRecord
 	has_many :customers
 
 	validates :payment_type, presence: true
-	validates :last_4_digit,presence: true, length: { minimum: 4 , maximum: 4}
+	validates :last_4_digit,presence: true, length: { minimum: 4 , maximum: 4},format: { with: /\A(^[0-9]{4})\z/i, on: :create}
 end
