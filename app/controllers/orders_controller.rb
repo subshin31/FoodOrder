@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 	before_action :get_customer_name, only: [:new, :edit]
 
 	def index
-	 @orders = Order.all
+	 @orders = Order.all.order(:id).page(params[:page]).per(5)
 	 render
 	end	
 

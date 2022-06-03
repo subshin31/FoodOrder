@@ -1,7 +1,7 @@
 class PaymentsController < ApplicationController
 	before_action :current_payment, only: [:show, :edit, :update, :destroy]
-    before_action :get_customer_name, only: [:new, :edit]
-    before_action :get_order_id, only: [:new, :edit]
+    before_action :get_customer_name, only: [:new, :edit, :create]
+    before_action :get_order_id, only: [:new, :edit, :create]
 
 	def index
 		@payments = Payment.all.order(:id).page(params[:page]).per(4)
@@ -13,8 +13,8 @@ class PaymentsController < ApplicationController
 	end
 
 	def create
-		@payments = Payment.new(payment_params)
-		if @payments.save
+		@payment = Payment.new(payment_params)
+		if @payment.save
 			redirect_to payments_url
 		else
 			render :new

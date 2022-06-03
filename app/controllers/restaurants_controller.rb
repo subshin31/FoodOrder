@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
  before_action :current_restaurant, only: [:show, :edit, :update, :destroy]
- before_action :get_cuisine_names, only: [:new, :edit]
+ before_action :get_cuisine_names, only: [:new, :edit, :create]
 
  def index
   @restaurants = Restaurant.all.order(:name).page(params[:page]).per(3)
